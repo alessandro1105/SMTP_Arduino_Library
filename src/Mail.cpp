@@ -15,3 +15,107 @@
 */
 
 #include "Mail.h"
+
+// Constructor
+Mail::Mail() {}
+
+// Set the sender of the mail
+bool Mail::from(const char *address, const char *name = NULL) {
+   _from[0] = address;
+   _from[1] = name;
+
+   return true;
+}
+
+// Set the reply to of the mail
+bool Mail::replyTo(const char *replyTo) {
+   _replyTo = replyTo;
+
+   return true;
+}
+// Add a recipient to the mail
+
+bool Mail::to(const char *address, const char *name = NULL) {
+   // Check if there is space to add a new recipient
+   if (_recipientIndex > MAIL_MAX_RECIPIENTS) {
+      return false;
+   }
+
+   // Save the header
+   _recipients[_recipientIndex][0] = address;
+   _recipients[_recipientIndex][1] = name;
+   _recipientsType[_recipientIndex] = MAIL_RECIPIENT_TO;
+
+   // Increment the index
+   _recipientIndex++;
+   
+   return true;
+}
+
+// Add a CC recipient
+bool Mail::cc(const char *address, const char *name = NULL) {
+   // Check if there is space to add a new recipient
+   if (_recipientIndex > MAIL_MAX_RECIPIENTS) {
+      return false;
+   }
+
+   // Save the header
+   _recipients[_recipientIndex][0] = address;
+   _recipients[_recipientIndex][1] = name;
+   _recipientsType[_recipientIndex] = MAIL_RECIPIENT_CC;
+
+   // Increment the index
+   _recipientIndex++;
+   
+   return true;
+}
+
+// Add BCC recipient
+bool Mail::bcc(const char *address) {
+   // Check if there is space to add a new recipient
+   if (_recipientIndex > MAIL_MAX_RECIPIENTS) {
+      return false;
+   }
+
+   // Save the header
+   _recipients[_recipientIndex][0] = address;
+   _recipients[_recipientIndex][1] = NULL;
+   _recipientsType[_recipientIndex] = MAIL_RECIPIENT_BCC;
+
+   // Increment the index
+   _recipientIndex++;
+   
+   return true;
+}
+
+// Subjecto of the mail
+bool Mail::subject(const char *subject) {
+   _subject = subject;
+
+   return true;
+}
+
+// Set the body of the mail
+bool Mail::body(const char *body) {
+   _body = body;
+
+   return true;
+}
+
+// Set personalized header
+bool Mail::header(const char *name, const char *value) { // do not include the colon symbol in the name of the header
+   // Check if there is space to add a new headers
+   if (_headerIndex > MAIL_MAX_HEADERS) {
+      return false;
+   }
+
+   // Save the header
+   _headers[_headerIndex][0] = name;
+   _headers[_headerIndex][1] = value;
+
+   // Increment the index
+   _headerIndex++;
+
+   return true;
+}
+

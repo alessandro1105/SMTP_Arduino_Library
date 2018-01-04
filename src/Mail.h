@@ -19,12 +19,21 @@
 #define Mail_H
 
 #include <Arduino.h>
-#include <Client.h>
 #include <SMTPClient.h>
+
+#define MAIL_MAX_RECIPIENTS 9
+#define MAIL_MAX_HEADERS 3
 
 //--- DEBUG ----
 //comment this line to disable all debug information
 #define DEBUG
+
+// Mail recipient type
+typedef enum mail_recipient_type: uint8_t {
+  MAIL_RECIPIENT_TO,    // To field
+  MAIL_RECIPIENT_CC,    // CC field
+  MAIL_RECIPIENT_BCC    // BCC field
+};
 
 //class D7S
 class Mail {
@@ -35,31 +44,42 @@ class Mail {
       Mail();
 
       // Set the sender of the mail
-      void from(const char *from); // Must be of the type "Name <address>" or "address"
+      bool from(const char *address, const char *name = NULL);
       // Set the reply to of the mail
-      void replyTo(const char *to); // Must be of the type "Name <address>" or "address"
+      bool replyTo(const char *replyTo);
       // Add a recipient to the mail
-      void to(const char *to); // Must be of the type "Name <address>" or "address"
+      bool to(const char *address, const char *name = NULL);
       // Add a CC recipient
-      void cc(const char *cc); // Must be of the type "Name <address>" or "address"
+      bool cc(const char *address, const char *name = NULL);
       // Add BCC recipient
-      void bcc(const char *bcc); // Must be of the type "Name <address>" or "address"
+      bool bcc(const char *address);
       // Subjecto of the mail
-      void subject(const char *subject);
+      bool subject(const char *subject);
       // Set the body of the mail
-      void body(const char *body);
+      bool body(const char *body);
       // Set personalized header
-      void header(const char *name, const char *value); // do not include the colon symbol in the name of the header
+      bool header(const char *name, const char *value); // do not include the colon symbol in the name of the header
 
 
    protected:
 
       // From field
-      const char *_from;
+      const char *_from[2];
       // Subject of the mail
       const char *_subject;
       // Body of the message
       const char *_body;
+      // ReplyTo
+      const char *_replyTo;
+      // Recipients
+      const char *_recipients[MAIL_MAX_RECIPIENTS][2];
+      mail_recipient_type _recipientsType[MAIL_MAX_RECIPIENTS];
+      // Headers
+      const char *_headers[MAIL_MAX_HEADERS][2];
+
+      // Indexes
+      size_t _recipientIndex = 0;
+      size_t _headerIndex = 0;
 
    friend class SMTPClient;
      
