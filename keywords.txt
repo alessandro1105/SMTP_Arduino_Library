@@ -1,0 +1,57 @@
+#######################################
+# Syntax Coloring Map For D7S Arduino Library
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SMTPClient 							KEYWORD1
+Mail 	 							KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+connect 							KEYWORD2
+setAuthLogin						KEYWORD2
+authLogin 							KEYWORD2
+ehlo								KEYWORD2
+mailFrom 							KEYWORD2
+rcptTo 								KEYWORD2
+data 								KEYWORD2
+body  								KEYWORD2
+finishData 							KEYWORD2
+quit 								KEYWORD2
+header 								KEYWORD2
+awaitSMTPResponse 					KEYWORD2
+send 								KEYWORD2
+
+from 								KEYWORD2
+replyTo 							KEYWORD2
+to 									KEYWORD2
+cc 									KEYWORD2
+bcc 								KEYWORD2
+subject 							KEYWORD2
+body 								KEYWORD2
+header								KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+SMTP_OK                        		LITERAL1
+SMTP_CLIENT_NOT_CONNECTED      		LITERAL1
+SMTP_CLIENT_ALREADY_CONNECTED   	LITERAL1
+SMTP_CLIENT_CANNOT_CONNECT      	LITERAL1
+SMTP_CONNECTION_ERROR           	LITERAL1
+SMTP_IDENTIFICATION_ERROR       	LITERAL1
+SMTP_AUTH_ERROR                 	LITERAL1
+SMTP_MAIL_FROM_ERROR            	LITERAL1
+SMTP_RCPT_TP_ERROR              	LITERAL1
+SMTP_DATA_ERROR                 	LITERAL1
+SMTP_BODY_ERROR                 	LITERAL1
+SMTP_QUIT_ERROR                 	LITERAL1
+SMTP_DATA_NOT_SENT              	LITERAL1
+SMTP_BODY_ALREADY_SENT          	LITERAL1
+SMTP_AUTH_NOT_SET                	LITERAL1
