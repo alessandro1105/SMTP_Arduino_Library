@@ -17,10 +17,17 @@
 #include "Mail.h"
 
 // Constructor
-Mail::Mail() {}
+Mail::Mail() {
+   // Initializing variables
+   _from[0] = NULL;
+   _from[1] = NULL;
+   _subject = NULL;
+   _body = NULL;
+   _replyTo = NULL;
+}
 
 // Set the sender of the mail
-bool Mail::from(const char *address, const char *name = NULL) {
+bool Mail::from(const char *address, const char *name) {
    _from[0] = address;
    _from[1] = name;
 
@@ -35,7 +42,7 @@ bool Mail::replyTo(const char *replyTo) {
 }
 // Add a recipient to the mail
 
-bool Mail::to(const char *address, const char *name = NULL) {
+bool Mail::to(const char *address, const char *name) {
    // Check if there is space to add a new recipient
    if (_recipientIndex > MAIL_MAX_RECIPIENTS) {
       return false;
@@ -53,7 +60,7 @@ bool Mail::to(const char *address, const char *name = NULL) {
 }
 
 // Add a CC recipient
-bool Mail::cc(const char *address, const char *name = NULL) {
+bool Mail::cc(const char *address, const char *name) {
    // Check if there is space to add a new recipient
    if (_recipientIndex > MAIL_MAX_RECIPIENTS) {
       return false;

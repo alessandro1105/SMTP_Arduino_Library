@@ -287,7 +287,7 @@ smtp_status SMTPClient::header(const char *name, const char *value) {
 
 // --- SMTP STATUS ---
 // Await for the SMTP server to respond
-bool SMTPClient::awaitSMTPResponse(const char *response = NULL, uint16_t timeout = 10000) {
+bool SMTPClient::awaitSMTPResponse(const char *response, uint16_t timeout) {
    uint32_t time = millis();
 
   // Wait until the SMTP server respond or the timeout expires
@@ -387,7 +387,12 @@ smtp_status SMTPClient::send(Mail &mail) {
    }
 
    // Subject
-   if ((status = header("Subject", mail._subject)) != SMTP_OK) {
+   if (mail._subject != NULL && (status = header("Subject", mail._subject)) != SMTP_OK) {
+      return status;
+   }
+
+   // Subject
+   if (mail._replyTo != NULL && (status = header("ReplyTO", mail._replyTo)) != SMTP_OK) {
       return status;
    }
 
