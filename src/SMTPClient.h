@@ -25,7 +25,7 @@
 // --- DEBUG ----
 // Comment this lines to disable all debug information
 //#define DEBUG // Print only the SMTP server responses
-#define DEBUG_ALL // Print both the commands sent to the SMTP server and the responses from it
+//#define DEBUG_ALL // Print both the commands sent to the SMTP server and the responses from it
 
 // Circular dependencies
 class Mail;
