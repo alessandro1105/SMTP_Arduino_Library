@@ -1,6 +1,6 @@
 # SMTPClient Arduino Library
 
-SMTPClient is a library which allow Arduino to send email through an SMTP server. The library support Extended SMTP, implemented e.g. by GMail. (You still need a client capable of SSL connection). The library is compatibile with Arduino/Genuino, Fishino (all flavour) and ESP8266.
+SMTPClient is a library which allow Arduino to send email through an SMTP server. The library support Extended SMTP, implemented e.g. by GMail (you still need a client capable of SSL connection). The library is compatibile with Arduino/Genuino, Fishino (all flavour) and ESP8266.
 
 ## Getting Started
 

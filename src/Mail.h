@@ -26,7 +26,7 @@
 
 //--- DEBUG ----
 //comment this line to disable all debug information
-#define DEBUG
+//#define DEBUG
 
 // Mail recipient type
 typedef enum mail_recipient_type: uint8_t {
