@@ -27,11 +27,11 @@
 
 // here pur SSID of your network
 // inserire qui lo SSID della rete WiFi
-#define MY_SSID "Casa"
+#define MY_SSID ""
 
 // here put PASSWORD of your network. Use "" if none
 // inserire qui la PASSWORD della rete WiFi -- Usare "" se la rete non ￨ protetta
-#define MY_PASS "alepas1105119"
+#define MY_PASS ""
 
 // here put required IP address (and maybe gateway and netmask!) of your Fishino
 // comment out this lines if you want AUTO IP (dhcp)
